@@ -1,0 +1,47 @@
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label>
+      Name:
+      <input type="text" formControlName="name" placeholder="Ivan Ivanov">
+    </label>
+    <span *ngIf="profileForm.get('name').invalid && (profileForm.get('name').dirty || profileForm.get('name').touched)">Error! Enter one or two words</span>
+    <span *ngIf="profileForm.get('name').errors['Format']">Error! Enter one or two words</span>
+  </div>
+  <div>
+    <label>
+      Age:
+      <input type="text" formControlName="age" placeholder="18">
+    </label>
+    <span *ngIf="profileForm.get('age').invalid && (profileForm.get('age').dirty || profileForm.get('age').touched)"> Error! Enter the number from 18 till 65</span>
+    <span *ngIf="profileForm.get('age').errors['IntegerNumber']">Enter integer number from 18 till 65</span>
+    <span *ngIf="profileForm.get('age').errors['CorrectNumber']">Enter the number from 18 till 65</span>
+  </div>
+  <div>
+    <label>
+      Birthday:
+      <input type="text" formControlName="birthday" placeholder="2000-01-01">
+    </label>
+    <span *ngIf="profileForm.get('birthday').invalid && (profileForm.get('birthday').dirty || profileForm.get('birthday').touched)">Enter your birthday</span>
+    <span *ngIf="profileForm.get('birthday').errors['Format']">Enter correct format</span>
+  </div>
+  <div>
+    <label>
+      Date of login:
+      <input type="text" formControlName="dateOfLogin" placeholder="2000-01-01">
+    </label>
+    <span *ngIf="profileForm.get('dateOfLogin').invalid && (profileForm.get('dateOfLogin').dirty || profileForm.get('dateOfLogin').touched)">Enter your date of login</span>
+    <span *ngIf="profileForm.get('dateOfLogin').errors['Format']">Enter correct format</span>
+  </div>
+  <div>
+    <label>
+      Date of notification:
+      <input type="text" formControlName="dateOfNotification" placeholder="2000-01-01">
+    </label>
+    <span *ngIf="profileForm.get('dateOfNotification').invalid && (profileForm.get('dateOfNotification').dirty || profileForm.get('dateOfNotification').touched)">Enter your date of notification</span>
+    <span *ngIf="profileForm.get('dateOfNotification').errors['Format']">Enter correct format</span>
+  </div>
+  <button type="submit" [disabled]="!profileForm.valid" (click)="onSubmit()">Submit</button>
+</form>
+
+<div *ngIf="profileForm.valid">UPDATE</div>
+<div *ngIf="showInfo">ProfileValues: {{ profileForm.value | json  }}</div>
