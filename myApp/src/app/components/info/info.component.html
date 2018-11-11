@@ -1,19 +1,19 @@
-<button (click)="show = !show">{{show ? 'update' : 'info'}}</button>
-<br>
-<div *ngIf="show">
-  <div>{{error}}</div>
-  <ul>
-    <li *ngFor="let user of users">
-      <p>ID of user: {{user?.id}}</p>
-      <p>Name of user: {{user?.name}}</p>
-      <p>Password of user: {{user?.password}}</p>
-      <p>Birthday of user: {{user?.birthday}}</p>
-      <p>user's date of login: {{user?.dateOfLogin}}</p>
-      <p>user's date of notification: {{user?.dateOfNotification}}</p>
-      <p>user's description: {{user?.description}}</p>
-    </li>
-  </ul>
+<ul class="nav">
+  <li class="nav-item">
+    <a class="nav-link" routerLink="">Logout</a>
+  </li>
+</ul>
+<ul class="nav nav-tabs text-left">
+  <li class="nav-item">
+    <a class="nav-link"  (click)="isActiveInfo()" [class.active]="clicked" routerLink="/info">Info</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" (click)="isActiveUpdate()" [class.active]="!clicked" routerLink="/info">Update</a>
+  </li>
+</ul>
+<div *ngIf="clicked">
+  <app-info-user></app-info-user>
 </div>
-<div *ngIf="!show">
-  <app-update></app-update>
+<div *ngIf="!clicked">
+  <app-update-info-user></app-update-info-user>
 </div>

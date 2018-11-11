@@ -10,6 +10,7 @@ import * as bodyParser from 'body-parser';
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
+app.use(cors());
 
 const users: User[] = require('./users.json');
 
@@ -19,7 +20,7 @@ app.get('/users', (req: Request, res: Response) => {
 
 app.get('/users/:id', (req: Request, res: Response) => {
     return users.find((element: User) => {
-      return (element.id === req.params.id);
+        return (element.id === req.params.id);
     });
 });
 
@@ -29,20 +30,19 @@ app.post('/users/add', (req: Request, res: Response) => {
 });
 
 app.put('/users/:id', (req: Request, res: Response) => {
-    const updateUser: User = req.body;
-    const elementIndex: number = users.findIndex((element: User, index: number) => {
-      return (element.id === req.params.id)
+    const elementIndex: number = users.findIndex((element: User) => {
+        return (element.id === req.params.id);
     });
-    users.splice(elementIndex, 1, updateUser);
+    users.splice(elementIndex, 1, req.body);
     res.send('User was updated');
 });
 
 app.delete('/users/:id', (req: Request, res: Response) => {
-    const elementIndex: number = users.findIndex((element: User, index: number) => {
-      return (element.id === req.params.id)
+    const elementIndex: number = users.findIndex((element: User) => {
+        return (element.id === req.params.id);
     });
     users.splice(elementIndex, 1);
-      res.send('User was deleted');
+    res.send('User was deleted');
 });
 
 app.use(function (err: ErrorRequestHandler, req: Request, res: Response, next: NextFunction) {

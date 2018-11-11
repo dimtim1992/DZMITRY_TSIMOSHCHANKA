@@ -1,14 +1,14 @@
-import {ValidatorFn} from '@angular/forms';
 import {AbstractControl} from '@angular/forms';
 
 const minAge = 18;
 const maxAge = 65;
 
-export function ageValidator(): ValidatorFn {
-  return (control: AbstractControl): { [key: string]: any } | null => {
-    if (!isNaN(control.value) && Number.isInteger(control.value)) {
-      return (control.value >= minAge && control.value <= maxAge) ? null : {'CorrectNumber': true};
+export function ageValidator(control: AbstractControl): { [key: string]: any } | null {
+    if(control.value && isNaN(control.value)) {
+      return {'Number': true}
     }
-    return {'IntegerNumber': true};
-  };
+    if(control.value && (control.value < minAge || control.value > maxAge)) {
+      return {'CorrectNumber': true}
+    }
+    return null;
 }

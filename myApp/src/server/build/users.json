@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "name": "Dim",
+    "password": "12345",
+    "birthday": "1996-08-12",
+    "dateOfLogin": "2018-09-18",
+    "dateOfNotification": "2018-09-20",
+    "description": "person"
+  },
+  {
+    "id": 2,
+    "name": "Alex",
+    "password": "2233",
+    "birthday": "1998-01-13",
+    "dateOfLogin": "2018-09-19",
+    "dateOfNotification": "2018-09-19",
+    "description": "person"
+  },
+  {
+    "id": 3,
+    "name": "Helen",
+    "password": "132963",
+    "birthday": "1994-11-11",
+    "dateOfLogin": "2018-09-16",
+    "dateOfNotification": "2018-09-18",
+    "description": "person"
+  }
+]

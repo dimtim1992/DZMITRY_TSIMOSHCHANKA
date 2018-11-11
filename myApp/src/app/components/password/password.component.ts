@@ -1,16 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder} from '@angular/forms'
-import {loginValidator} from '../../validators/loginValidator';
 import {passwordValidator} from "../../validators/passwordValidator";
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-password',
+  templateUrl: './password.component.html',
+  styleUrls: ['./password.component.css']
 })
-export class LoginComponent{
+export class PasswordComponent{
   profileForm = this.fb.group({
-    login: ['', '', [loginValidator]],
+    login: [''],
     password: ['', [passwordValidator]]
   });
 
@@ -18,6 +17,10 @@ export class LoginComponent{
 
   onSubmit() {
     this.showInfo = true;
+  }
+
+  getPassword() {
+
   }
 
   constructor(private fb: FormBuilder) {

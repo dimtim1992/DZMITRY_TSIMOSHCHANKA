@@ -1,0 +1,76 @@
+<form class="needs-validation" [formGroup]="profileForm" (ngSubmit)="onSubmit()" novalidate>
+  <div class="col-md-4 mb-3">
+    <label>
+      Name:
+      <input type="text" class="form-control" formControlName="name" placeholder="Ivan Ivanov">
+    </label>
+    <div class="text-danger" *ngIf="profileForm.controls['name'].hasError('Words')">You have to enter one or two words
+    </div>
+    <div class="text-danger" *ngIf="profileForm.controls['name'].hasError('Capital')">Every word has to start from
+      capital letter
+    </div>
+    <div class="text-danger" *ngIf="profileForm.controls['name'].hasError('Letter')">Every word has to include only
+      english letters
+    </div>
+    <div class="text-success" *ngIf="profileForm.controls['name'].valid && profileForm.controls['name'].value">Good
+    </div>
+  </div>
+  <div class="col-md-4 mb-3">
+    <label>
+      Age:
+      <input type="text" class="form-control" formControlName="age" placeholder="18">
+    </label>
+    <div class="text-danger"
+         *ngIf="profileForm.controls['age'].hasError('Number') && profileForm.controls['age'].value">You have to use
+      only integer numbers
+    </div>
+    <div class="text-danger" *ngIf="profileForm.controls['age'].hasError('CorrectNumber')">Enter the number from 18 till
+      65
+    </div>
+    <div class="text-success" *ngIf="profileForm.controls['age'].valid && profileForm.controls['age'].value">Good</div>
+  </div>
+  <div class="col-md-4 mb-3">
+    <label>
+      Birthday:
+      <input type="text" class="form-control" formControlName="birthday" placeholder="2000/01/01">
+    </label>
+    <div class="text-danger"
+         *ngIf="profileForm.controls['birthday'].hasError('Format') && profileForm.controls['birthday'].value">Enter
+      correct format
+    </div>
+    <div class="text-success" *ngIf="profileForm.controls['birthday'].valid && profileForm.controls['birthday'].value">
+      Good
+    </div>
+  </div>
+  <div class="col-md-4 mb-3">
+    <label>
+      Date of login:
+      <input type="text" class="form-control" formControlName="dateOfLogin" placeholder="01 01 2001">
+    </label>
+    <div class="text-danger"
+         *ngIf="profileForm.controls['dateOfLogin'].hasError('Format') && profileForm.controls['dateOfLogin'].value">
+      Enter correct format
+    </div>
+    <div class="text-success"
+         *ngIf="profileForm.controls['dateOfLogin'].valid && profileForm.controls['dateOfLogin'].value">Good
+    </div>
+  </div>
+  <div class="col-md-4 mb-3">
+    <label>
+      Date of notification:
+      <input type="text" class="form-control" formControlName="dateOfNotification" placeholder="01-01-2001">
+    </label>
+    <div class="text-danger"
+         *ngIf="profileForm.controls['dateOfNotification'].hasError('Format') && profileForm.controls['dateOfNotification'].value">
+      Enter correct format
+    </div>
+    <div class="text-success"
+         *ngIf="profileForm.controls['dateOfNotification'].valid && profileForm.controls['dateOfNotification'].value">
+      Good
+    </div>
+  </div>
+  <div class="col-md-4 mb-3">
+    <button type="submit" class="btn btn-primary" [disabled]="!profileForm.valid" (click)="onSubmit()">Update</button>
+  </div>
+</form>
+
